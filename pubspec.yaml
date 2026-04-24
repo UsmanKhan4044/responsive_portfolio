@@ -1,0 +1,44 @@
+name: flutter_profile
+description: A new Flutter project.
+publish_to: "none"
+version: 1.0.0+1
+
+environment:
+  sdk: ">=3.0.0 <4.0.0"
+
+# Dependencies specify other packages that your package needs in order to work.
+# To automatically upgrade your package dependencies to the latest versions
+# consider running `flutter pub upgrade --major-versions`. Alternatively,
+# dependencies can be manually updated by changing the version numbers below to
+# the latest version available on pub.dev. To see which dependencies have newer
+# versions available, run `flutter pub outdated`.
+dependencies:
+  # ... existing packages ...
+  url_launcher: ^6.2.1
+
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.6
+
+  google_fonts: ^6.1.0
+  flutter_svg: ^2.0.9
+  animated_text_kit: ^4.2.2
+
+  firebase_core: ^2.24.2
+  cloud_firestore: ^4.13.5
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.1
+
+# For information on the generic Dart part of this file, see the
+# following page: https://dart.dev/tools/pub/pubspec
+
+flutter:
+  uses-material-design: true
+
+  # ⚠️ CRITICAL: ASSETS CONFIGURATION
+  assets:
+    - assets/icons/
+    - assets/images/
