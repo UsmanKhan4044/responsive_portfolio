@@ -16,96 +16,86 @@ class MyProjects extends StatelessWidget {
         Text("My Projects", style: Theme.of(context).textTheme.titleLarge),
         SizedBox(height: defaultPadding),
 
-        // 🔥 REAL-TIME DATA FROM FIREBASE
+        // 1. First, try to load from Firestore
         StreamBuilder<QuerySnapshot>(
-          stream: FirebaseFirestore.instance.collection('projects').snapshots(),
+          stream: FirebaseFirestore.instance
+              .collection('projects')
+              .snapshots()   // no orderBy to avoid index errors
+              .handleError((error) {
+            debugPrint('🔥 STREAM ERROR: $error');
+          }),
           builder: (context, snapshot) {
+            // Print state for debugging
+            debugPrint('📡 Stream state: ${snapshot.connectionState}, error: ${snapshot.hasError}, data: ${snapshot.hasData}');
 
-            // Loading state
+            // Loading
             if (snapshot.connectionState == ConnectionState.waiting) {
-              return Center(
-                child: Padding(
-                  padding: EdgeInsets.all(defaultPadding * 2),
-                  child: CircularProgressIndicator(color: primaryColor),
-                ),
-              );
+              return Center(child: CircularProgressIndicator(color: primaryColor));
             }
 
-            // Error state
+            // Error
             if (snapshot.hasError) {
-              return Center(
-                child: Padding(
-                  padding: EdgeInsets.all(defaultPadding),
-                  child: Column(
-                    children: [
-                      Icon(Icons.error_outline, size: 60, color: Colors.red),
-                      SizedBox(height: defaultPadding),
-                      Text("Error loading projects", style: TextStyle(color: Colors.red)),
-                      SizedBox(height: defaultPadding / 2),
-                      Text(
-                        "${snapshot.error}",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(fontSize: 12, color: Colors.grey),
-                      ),
-                    ],
-                  ),
-                ),
-              );
+              debugPrint('❌ Firestore error: ${snapshot.error}');
+              return _buildDemoFallback(context);
             }
 
-            // Empty state
+            // No data or empty
             if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
-              return Center(
-                child: Padding(
-                  padding: EdgeInsets.all(defaultPadding * 2),
-                  child: Column(
-                    children: [
-                      Icon(Icons.folder_open, size: 60, color: Colors.grey),
-                      SizedBox(height: defaultPadding),
-                      Text("No projects yet", style: TextStyle(color: Colors.grey)),
-                      SizedBox(height: defaultPadding / 2),
-                      Text(
-                        "Add projects in Firebase Console",
-                        style: TextStyle(fontSize: 12, color: Colors.grey[600]),
-                      ),
-                    ],
-                  ),
-                ),
-              );
+              debugPrint('📭 No documents in Firestore, using demo data.');
+              return _buildDemoFallback(context);
             }
 
-            // ✅ SUCCESS: Build project list from Firebase
-            // FIXED: Proper type casting
+            // Success – build from Firestore
+            debugPrint('✅ ${snapshot.data!.docs.length} projects loaded from Firestore');
             var projects = snapshot.data!.docs.map((doc) {
               Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
-
               return Project(
                 id: doc.id,
                 title: data['title'] ?? 'Untitled',
-                description: data['description'] ?? 'No description',
+                description: data['description'] ?? '',
                 imageUrl: data['imageUrl'],
                 projectUrl: data['projectUrl'],
               );
             }).toList();
 
-            return Responsive(
-              mobile: ProjectsGridView(
-                crossAxisCount: 1,
-                childAspectRatio: 1.7,
-                projects: projects,
-              ),
-              mobileLarge: ProjectsGridView(
-                crossAxisCount: 2,
-                projects: projects,
-              ),
-              tablet: ProjectsGridView(
-                childAspectRatio: 1.1,
-                projects: projects,
-              ),
-              desktop: ProjectsGridView(projects: projects),
-            );
+            return _buildGrid(context, projects);
           },
-        )
+        ),
+      ],
+    );
+  }
+
+  // Build the responsive grid
+  Widget _buildGrid(BuildContext context, List<Project> projects) {
+    return Responsive(
+      mobile: ProjectsGridView(
+        crossAxisCount: 1,
+        childAspectRatio: 1.7,
+        projects: projects,
+      ),
+      mobileLarge: ProjectsGridView(
+        crossAxisCount: 2,
+        projects: projects,
+      ),
+      tablet: ProjectsGridView(
+        childAspectRatio: 1.1,
+        projects: projects,
+      ),
+      desktop: ProjectsGridView(projects: projects),
+    );
+  }
+
+  // Fallback widget when Firestore fails or is empty
+  Widget _buildDemoFallback(BuildContext context) {
+    return Column(
+      children: [
+        _buildGrid(context, demo_projects),
+        SizedBox(height: defaultPadding / 2),
+        Text(
+          "⚠️ Showing demo data – Firebase collection 'projects' empty or permission denied.",
+          style: TextStyle(color: Colors.grey, fontSize: 12),
+          textAlign: TextAlign.center,
+        ),
       ],
     );
   }
