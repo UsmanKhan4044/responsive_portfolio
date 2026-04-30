@@ -8,7 +8,7 @@ final CVData myCVData = CVData(
   phone: "+92 315 9056767",
   location: "Peshawar, KPK, Pakistan",
   linkedin: "https://linkedin.com/in/usman-khan-YOUR_PROFILE",
-  github: "https://github.com/YOUR_USERNAME",
+  github: "https://github.com/UsmanKhan4044",
 
   summary: """
 Experienced IT Specialist with a strong background in designing and maintaining computer systems for diverse business clients. 
@@ -25,7 +25,7 @@ Possess strong technical skills combined with excellent interpersonal abilities,
     Skill(name: "MS Office", level: 0.90, category: "Tools"),
     Skill(name: "WordPress", level: 0.50, category: "Tools"),
     Skill(name: "Software Installation", level: 0.90, category: "IT Support"),
-    Skill(name: "Windows Installation", level: 0.100, category: "IT Support"),
+    Skill(name: "Windows Installation", level: 1.00, category: "IT Support"),
     Skill(name: "Network Configuration", level: 0.55, category: "IT Support"),
     Skill(name: "System Monitoring", level: 0.85, category: "IT Support"),
     Skill(name: "Team Leadership", level: 0.90, category: "Soft Skills"),
@@ -120,10 +120,5 @@ Possess strong technical skills combined with excellent interpersonal abilities,
   issuer: "Programming Training Center Peshawar (PTCP)",
   date: "2023",
   ),
-    Certification(
-      name: "IT Systems Monitoring Certification",
-      issuer: "Faysal Bank Internal Training",
-      date: "2025",
-    ),
   ],
 );
