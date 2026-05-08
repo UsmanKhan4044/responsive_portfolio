@@ -24,14 +24,24 @@ dependencies:
   flutter_svg: ^2.0.9
   animated_text_kit: ^4.2.2
 
-  firebase_core: ^2.24.2
+  firebase_core: ^2.32.0
   cloud_firestore: ^4.13.5
+  firebase_database: ^10.5.7
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^3.0.1
-  flutter_launcher_icons: ^0.14.4
+  flutter_launcher_icons: ^0.13.1 # Add this line
+
+flutter_launcher_icons:
+  android: "launcher_icon"  # Can be true, false, or custom icon name
+  ios: true
+  image_path: "Assets/icons/app_icon.png"
+  web:
+    generate: true
+    image_path: "Assets/icons/app_icon.png"
+    background_color: "#hexcode"
+    theme_color: "#hexcode"
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
