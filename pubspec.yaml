@@ -15,7 +15,6 @@ environment:
 dependencies:
   # ... existing packages ...
   url_launcher: ^6.2.1
-  vector_graphics: ^1.1.21 # Add this line
 
 
   flutter:
