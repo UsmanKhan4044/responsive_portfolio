@@ -17,7 +17,7 @@ Possess strong technical skills combined with excellent interpersonal abilities,
 """,
 
   skills: [
-    Skill(name: "Dart", level: 0.70, category: "Languages"),
+    Skill(name: "Dart", level: 0.65, category: "Languages"),
     Skill(name: "JavaScript", level: 0.40, category: "Languages"),
     Skill(name: "Python", level: 0.35, category: "Languages"),
     Skill(name: "Flutter", level: 0.60, category: "Frameworks"),

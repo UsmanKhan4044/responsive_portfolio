@@ -31,6 +31,6 @@ jobs:
         uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
-          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT }}'
+          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT }}' # <-- Check this line!
           channelId: live  # Use 'live' for production, or leave empty for preview
           projectId: responsive-portfolio-9ed1e  # Replace with your project ID
