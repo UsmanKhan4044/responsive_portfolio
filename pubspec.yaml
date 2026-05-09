@@ -50,7 +50,9 @@ flutter_launcher_icons:
 flutter:
   uses-material-design: true
 
-  # ⚠️ CRITICAL: ASSETS CONFIGURATION
+  # <-- YOU MUST HAVE THIS SECTION -->
   assets:
-    - assets/icons/
-    - assets/images/
+    - Assets/images/
+    - Assets/icons/
+    # (Add whatever folders contain your images and SVGs.
+    # Make sure the folder names match EXACTLY what you have in VS Code)
