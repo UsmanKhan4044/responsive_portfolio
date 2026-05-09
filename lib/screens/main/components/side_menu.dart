@@ -30,7 +30,7 @@ class SideMenu extends StatelessWidget {
                   children: [
                     AreaInfoText(title: "Residence", text: "Pakistan"),
                     AreaInfoText(title: "City", text: "Peshawar"),
-                    AreaInfoText(title: "Age", text: "25"),
+                    AreaInfoText(title: "Age", text: "24"),
 
                     Skills(),
                     SizedBox(height: defaultPadding),
