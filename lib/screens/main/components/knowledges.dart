@@ -20,7 +20,7 @@ class Knowledges extends StatelessWidget {
         KnowledgeText(text: "Gulp, Webpack, Grunt"),
         KnowledgeText(text: "GIT Knowledge"),
         KnowledgeText(text: "WordPress"),
-        KnowledgeText(text: "Agentics AI"),
+        KnowledgeText(text: "Agentic AI"),
       ],
     );
   }
