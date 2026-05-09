@@ -37,10 +37,10 @@ dev_dependencies:
 flutter_launcher_icons:
   android: "launcher_icon"  # Can be true, false, or custom icon name
   ios: true
-  image_path: "Assets/icons/app_icon.png"
+  image_path: "assets/icons/app_icon.png"
   web:
     generate: true
-    image_path: "Assets/icons/app_icon.png"
+    image_path: "assets/icons/app_icon.png"
     background_color: "#hexcode"
     theme_color: "#hexcode"
 
@@ -52,7 +52,5 @@ flutter:
 
   # <-- YOU MUST HAVE THIS SECTION -->
   assets:
-    - Assets/images/
-    - Assets/icons/
-    # (Add whatever folders contain your images and SVGs.
-    # Make sure the folder names match EXACTLY what you have in VS Code)
+    - assets/images/
+    - assets/icons/
