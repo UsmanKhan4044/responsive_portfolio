@@ -15,7 +15,7 @@ class Coding extends StatelessWidget {
           padding: const EdgeInsets.symmetric(vertical: defaultPadding),
           child: Text("Coding", style: Theme.of(context).textTheme.titleSmall),
         ),
-        AnimatedLinearProgressIndicator(percentage: 0.7, label: "Dart"),
+        AnimatedLinearProgressIndicator(percentage: 0.65, label: "Dart"),
         AnimatedLinearProgressIndicator(percentage: 0.35, label: "Python"),
         AnimatedLinearProgressIndicator(percentage: 0.80, label: "HTML"),
         AnimatedLinearProgressIndicator(percentage: 0.60, label: "CSS"),
