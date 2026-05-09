@@ -17,7 +17,7 @@ class Skills extends StatelessWidget {
         ),
         Row(
           children: [
-            Expanded(child: AnimatedCircularProgressIndicator(percentage: 0.70, label: "Flutter")),
+            Expanded(child: AnimatedCircularProgressIndicator(percentage: 0.65, label: "Flutter")),
             SizedBox(width: defaultPadding),
             Expanded(child: AnimatedCircularProgressIndicator(percentage: 0.40, label: "Django")),
             SizedBox(width: defaultPadding),
